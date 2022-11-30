@@ -68,7 +68,7 @@ public class ProductServiceTest {
     public void testInsertProductNull() {
         try {
             productService.insert(null);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("Le produit ne peut pas être null", e.getMessage());
         }
@@ -79,7 +79,7 @@ public class ProductServiceTest {
         Product product = new Product(null, null, 2);
         try {
             productService.insert(product);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("Le libellé du produit est requis", e.getMessage());
         }
@@ -109,7 +109,7 @@ public class ProductServiceTest {
     public void testUpdateProductNull() {
         try {
             productService.update(null);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("Le produit ne peut pas être null", e.getMessage());
         }
@@ -120,7 +120,7 @@ public class ProductServiceTest {
         Product product = new Product(1, null, 2);
         try {
             productService.update(product);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("Le libellé du produit est requis", e.getMessage());
         }
@@ -131,7 +131,7 @@ public class ProductServiceTest {
         Product product = new Product(null, "Perceuse", 2);
         try {
             productService.update(product);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("L'identifiant du produit est requis pour une modification", e.getMessage());
         }
@@ -142,7 +142,7 @@ public class ProductServiceTest {
         Product product = new Product(1, "Perceuse", null);
         try {
             productService.update(product);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("La quantité ne peut être nulle", e.getMessage());
         }
@@ -165,7 +165,7 @@ public class ProductServiceTest {
     public void testFindByIdIdNull() {
         try {
             productService.findById(null);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("L'id du produit recherché est requis", e.getMessage());
         }
@@ -190,7 +190,7 @@ public class ProductServiceTest {
     public void testDeleteIdNull() {
         try {
             productService.delete(null);
-            Assert.fail("Le test aurait du crashé");
+            Assert.fail("Le test aurait du crasher");
         } catch (RuntimeException e) {
             Assert.assertEquals("L'id du produit à supprimer est requis", e.getMessage());
         }

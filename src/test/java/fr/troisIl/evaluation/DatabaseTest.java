@@ -20,6 +20,7 @@ public class DatabaseTest {
         file.delete();
 
         db = new Database(testDatabaseFileName);
+
     }
 
     @Test
