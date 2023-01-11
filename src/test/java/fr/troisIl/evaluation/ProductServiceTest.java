@@ -61,7 +61,7 @@ public class ProductServiceTest {
         ResultSet totalProductAfterInsert = db.executeSelect("Select count(*) from Product");
 
         Assert.assertNotSame(totalProductBeforeInsert, totalProductAfterInsert);
-        
+
 
     }
 
@@ -151,6 +151,19 @@ public class ProductServiceTest {
 
     @Test
     public void testFindById() throws SQLException {
+        Product product = new Product(null, "Perceuse",2);
+
+        productService.insert(product);
+
+        Product productFound = productService.findById(product.getId());
+
+        ResultSet RequestProductFound = db.executeSelect("Select COUNT(*) from Product WHERE id = " + productFound.getId());
+
+        assertNotEquals(0, RequestProductFound.getInt(1));
+    }
+
+    @Test
+    public void testFindByIdDeux() throws SQLException {
         Product product = new Product(null, "Perceuse",2);
 
         productService.insert(product);
