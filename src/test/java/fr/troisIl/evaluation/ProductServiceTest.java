@@ -76,7 +76,7 @@ public class ProductServiceTest {
 
     @Test
     public void testInsertLabelNull() {
-        Product product = new Product(null, "null", 2);
+        Product product = new Product(null, null, 2);
         try {
             productService.insert(product);
             Assert.fail("Le test aurait du crasher");
