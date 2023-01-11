@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: 11
       - name: Run JUnit
-        run: mvn integration-test -Pcoverage
+        run: mvn integration-test -Pcoverage && mvn jacoco:report -Pcoverage
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
