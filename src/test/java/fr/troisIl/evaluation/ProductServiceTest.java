@@ -61,6 +61,7 @@ public class ProductServiceTest {
         ResultSet totalProductAfterInsert = db.executeSelect("Select count(*) from Product");
 
         Assert.assertNotSame(totalProductBeforeInsert, totalProductAfterInsert);
+        
 
     }
 
