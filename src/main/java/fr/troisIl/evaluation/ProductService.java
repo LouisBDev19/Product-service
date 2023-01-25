@@ -23,9 +23,9 @@ public class ProductService {
      * @param product le produit a inserer
      * @return le produit créé
      */
-    public Product insert(Product product) throws Exception {
+    public Product insert(Product product) {
         if(product == null) {
-            throw new Exception("Le produit ne peut pas être null");
+            throw new RuntimeException("Le produit ne peut pas être null");
         }
         if(product.getLabel() == null) {
             throw new RuntimeException("Le libellé du produit est requis");

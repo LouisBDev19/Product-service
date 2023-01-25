@@ -46,7 +46,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testInsert() throws Exception {
+    public void testInsert() throws SQLException {
         ResultSet totalProductBeforeInsert = db.executeSelect("Select count(*) from Product");
 
         Product product = new Product(null, "Perceuse",2);
@@ -70,7 +70,7 @@ public class ProductServiceTest {
         try {
             productService.insert(null);
             Assert.fail("Le test aurait du crasher");
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             Assert.assertEquals("Le produit ne peut pas être null", e.getMessage());
         }
     }
@@ -81,13 +81,13 @@ public class ProductServiceTest {
         try {
             productService.insert(product);
             Assert.fail("Le test aurait du crasher");
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             Assert.assertEquals("Le libellé du produit est requis", e.getMessage());
         }
     }
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testUpdate() throws SQLException {
         Product product = new Product(null, "Perceuse",2);
         productService.insert(product);
 
@@ -150,7 +150,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testFindById() throws Exception {
+    public void testFindById() throws SQLException {
         Product product = new Product(null, "Perceuse",2);
 
         productService.insert(product);
@@ -173,7 +173,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testDelete() throws Exception {
+    public void testDelete() throws SQLException {
         Product product = new Product(null, "Perceuse",2);
         productService.insert(product);
 
