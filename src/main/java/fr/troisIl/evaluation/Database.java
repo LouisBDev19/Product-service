@@ -19,7 +19,7 @@ public class Database {
      * Construit l'objet de communication avec la BDD
      * @param databasefilename le fichier sqlite
      */
-    public Database(String databasefilename) throws SQLException {
+    public Database(String databasefilename) {
         this.databasefilename = databasefilename;
         this.establishConnections();
     }
@@ -27,19 +27,19 @@ public class Database {
     /**
      * Etabli la connexion a la BDD.
      */
-    private void establishConnections() throws SQLException {
+    private void establishConnections() {
         // create database connection
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:" + this.databasefilename);
         } catch (SQLException e) {
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 
     /**
      * Créé les tables nécessaires au projet
      */
-    public void createBasicSqlTable() throws SQLException {
+    public void createBasicSqlTable() {
         String sql = "create table if not exists Product (id INTEGER PRIMARY KEY AUTOINCREMENT NULL, label text NOT NULL, quantity int NOT NULL);";
         executeUpdate(sql);
     }
@@ -49,14 +49,14 @@ public class Database {
      * @param sql la requete a executer
      * @return le statement de l'execution
      */
-    public Statement executeUpdate(String sql) throws SQLException {
+    public Statement executeUpdate(String sql) {
         Statement st;
         try {
             st = connection.createStatement();
             st.setQueryTimeout(30);
             st.executeUpdate(sql);
         } catch (SQLException e) {
-            throw e;
+            throw new RuntimeException(e);
         }
         return st;
     }
@@ -66,13 +66,13 @@ public class Database {
      * @param sql la requete SQL pour la requete préparée
      * @return le prepared statement
      */
-    public PreparedStatement generatePrepared(String sql) throws SQLException {
+    public PreparedStatement generatePrepared(String sql) {
         PreparedStatement st;
         try {
             st = connection.prepareStatement(sql);
             st.setQueryTimeout(30);
         } catch (SQLException e) {
-            throw e;
+            throw new RuntimeException(e);
         }
         return st;
     }
@@ -81,7 +81,7 @@ public class Database {
      * Affiche la première table présente en BDD
      * @return le nom de la première table trouvée
      */
-    public String showTable() throws SQLException {
+    public String showTable() {
         try {
             String s = "SELECT name FROM sqlite_master WHERE type='table';";
             Statement st = connection.createStatement();
@@ -91,7 +91,7 @@ public class Database {
                 return rs.getString(1);
             }
         } catch (SQLException e) {
-            throw e;
+            throw new RuntimeException(e);
         }
 
         return null;
@@ -102,14 +102,14 @@ public class Database {
      * @param select la requete à executer
      * @return les résultats
      */
-    public ResultSet executeSelect(String select) throws SQLException {
+    public ResultSet executeSelect(String select) {
         try {
             Statement st = connection.createStatement();
             st.setQueryTimeout(30);
             return st.executeQuery(select);
 
         } catch (SQLException e) {
-            throw e;
+            throw new RuntimeException(e);
         }
 
     }

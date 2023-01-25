@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,7 +12,7 @@ public class DatabaseTest {
     private Database db = null;
 
     @Before
-    public void setUp() throws SQLException {
+    public void setUp() {
         String testDatabaseFileName = "product.db";
 
         // reset la BDD avant le test
@@ -25,7 +24,7 @@ public class DatabaseTest {
     }
 
     @Test
-    public void testDatabaseTable() throws SQLException {
+    public void testDatabaseTable() {
         setUp();
 
         db.createBasicSqlTable();
