@@ -81,7 +81,7 @@ public class Database {
      * Affiche la première table présente en BDD
      * @return le nom de la première table trouvée
      */
-    public String showTable() {
+    public String showTable() throws SQLException {
         try {
             String s = "SELECT name FROM sqlite_master WHERE type='table';";
             Statement st = connection.createStatement();
@@ -93,6 +93,9 @@ public class Database {
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
+        finally {
+            connection.close();
+        }
 
         return null;
     }
@@ -102,7 +105,7 @@ public class Database {
      * @param select la requete à executer
      * @return les résultats
      */
-    public ResultSet executeSelect(String select) {
+    public ResultSet executeSelect(String select) throws SQLException {
         try {
             Statement st = connection.createStatement();
             st.setQueryTimeout(30);
@@ -110,6 +113,9 @@ public class Database {
 
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
+        }
+        finally {
+            connection.close();
         }
 
     }
