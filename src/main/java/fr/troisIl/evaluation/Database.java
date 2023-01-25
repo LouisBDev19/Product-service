@@ -93,9 +93,6 @@ public class Database {
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
-        finally {
-            connection.close();
-        }
 
         return null;
     }
@@ -113,9 +110,6 @@ public class Database {
 
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
-        }
-        finally {
-            connection.close();
         }
 
     }
