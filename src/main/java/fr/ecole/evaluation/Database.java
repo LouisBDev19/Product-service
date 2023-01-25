@@ -112,8 +112,5 @@ public class Database {
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
-        finally {
-            return null;
-        }
     }
 }
