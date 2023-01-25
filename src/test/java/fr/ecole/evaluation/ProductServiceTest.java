@@ -1,4 +1,4 @@
-package fr.troisIl.evaluation;
+package fr.ecole.evaluation;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 

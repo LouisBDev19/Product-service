@@ -1,4 +1,4 @@
-package fr.troisIl.evaluation;
+package fr.ecole.evaluation;
 
 import java.sql.*;
 
