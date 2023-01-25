@@ -32,7 +32,7 @@ public class Database {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:" + this.databasefilename);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -56,7 +56,7 @@ public class Database {
             st.setQueryTimeout(30);
             st.executeUpdate(sql);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
         return st;
     }
@@ -72,7 +72,7 @@ public class Database {
             st = connection.prepareStatement(sql);
             st.setQueryTimeout(30);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
         return st;
     }
@@ -91,7 +91,7 @@ public class Database {
                 return rs.getString(1);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
         return null;
@@ -109,7 +109,7 @@ public class Database {
             return st.executeQuery(select);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
     }
