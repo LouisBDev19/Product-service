@@ -28,6 +28,6 @@ public class DatabaseTest {
         setUp();
 
         db.createBasicSqlTable();
-        assertEquals(db.showTable(), "Product");
+        assertEquals("Product", db.showTable());
     }
 }
