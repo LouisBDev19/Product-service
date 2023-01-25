@@ -103,14 +103,17 @@ public class Database {
      * @return les résultats
      */
     public ResultSet executeSelect(String select) throws SQLException {
+        Statement st;
         try {
-            Statement st = connection.createStatement();
+            st = connection.createStatement();
             st.setQueryTimeout(30);
             return st.executeQuery(select);
 
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
-
+        finally {
+            connection.close();
+        }
     }
 }
