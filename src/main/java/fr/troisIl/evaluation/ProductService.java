@@ -25,7 +25,7 @@ public class ProductService {
      */
     public Product insert(Product product) throws Exception {
         if(product == null) {
-            throw new Exception();
+            throw new Exception("Le produit ne peut pas être null");
         }
         if(product.getLabel() == null) {
             throw new RuntimeException("Le libellé du produit est requis");
