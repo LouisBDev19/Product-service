@@ -2,6 +2,7 @@ package fr.ecole.evaluation;
 
 /**
  * Représente un produit en BDD
+ * Test
  */
 public class Product {
     private Integer id;
