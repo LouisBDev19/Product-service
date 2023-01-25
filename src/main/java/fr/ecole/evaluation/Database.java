@@ -113,7 +113,7 @@ public class Database {
             throw new IllegalArgumentException(e);
         }
         finally {
-            connection.close();
+
         }
     }
 }
