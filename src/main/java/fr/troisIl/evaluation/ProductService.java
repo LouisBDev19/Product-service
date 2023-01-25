@@ -25,10 +25,10 @@ public class ProductService {
      */
     public Product insert(Product product) {
         if(product == null) {
-            throw new RuntimeException("Le produit ne peut pas être null");
+            throw new IllegalArgumentException("Le produit ne peut pas être null");
         }
         if(product.getLabel() == null) {
-            throw new RuntimeException("Le libellé du produit est requis");
+            throw new IllegalArgumentException("Le libellé du produit est requis");
         }
         if(product.getQuantity() == null) {
             product.setQuantity(0);
@@ -45,16 +45,16 @@ public class ProductService {
      */
     public Product update(Product product) {
         if(product == null) {
-            throw new RuntimeException("Le produit ne peut pas être null");
+            throw new IllegalArgumentException("Le produit ne peut pas être null");
         }
         if(product.getLabel() == null) {
-            throw new RuntimeException("Le libellé du produit est requis");
+            throw new IllegalArgumentException("Le libellé du produit est requis");
         }
         if(product.getId() == null) {
-            throw new RuntimeException("L'identifiant du produit est requis pour une modification");
+            throw new IllegalArgumentException("L'identifiant du produit est requis pour une modification");
         }
         if(product.getQuantity() == null) {
-            throw new RuntimeException("La quantité ne peut être nulle");
+            throw new IllegalArgumentException("La quantité ne peut être nulle");
         }
 
         // vérifie que le produit existe bien en BDD avant de faire la mise à jour pour ne pas en créer un nouveau
@@ -71,11 +71,11 @@ public class ProductService {
      */
     public Product findById(Integer id) {
         if(id == null) {
-            throw new RuntimeException("L'id du produit recherché est requis");
+            throw new IllegalArgumentException("L'id du produit recherché est requis");
         }
         Product product = productDao.findById(id);
         if(product == null) {
-            throw new RuntimeException("Le produit n'a pas été trouvé en BDD");
+            throw new IllegalArgumentException("Le produit n'a pas été trouvé en BDD");
         }
         return product;
     }
@@ -86,11 +86,11 @@ public class ProductService {
      */
     public void delete(Integer id) {
         if(id == null) {
-            throw new RuntimeException("L'id du produit à supprimer est requis");
+            throw new IllegalArgumentException("L'id du produit à supprimer est requis");
         }
         Product product = productDao.findById(id);
         if(product == null) {
-            throw new RuntimeException("Le produit n'a pas été trouvé en BDD");
+            throw new IllegalArgumentException("Le produit n'a pas été trouvé en BDD");
         }
         productDao.delete(id);
     }
