@@ -37,7 +37,7 @@ public class ProductDao {
             ResultSet rs = database.executeSelect("SELECT max(id) FROM Product");
             product.setId(rs.getInt(1));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
         return product;
     }
@@ -58,7 +58,7 @@ public class ProductDao {
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
         return product;
     }
@@ -81,7 +81,7 @@ public class ProductDao {
                 product.setQuantity(result.getInt("quantity"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
         return product;
@@ -97,7 +97,7 @@ public class ProductDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch(SQLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 }
