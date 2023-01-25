@@ -40,7 +40,7 @@ jobs:
       - name: Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
         # Force to fail step after specific time.
-        # Comment for the last commit and push on master branch GitHub
+        # Comment for the last commit and push on master branch on GitHub
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
