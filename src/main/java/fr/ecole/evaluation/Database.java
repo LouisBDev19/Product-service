@@ -82,9 +82,10 @@ public class Database {
      * @return le nom de la première table trouvée
      */
     public String showTable() throws SQLException {
+        Statement st = null;
         try {
             String s = "SELECT name FROM sqlite_master WHERE type='table';";
-            Statement st = connection.createStatement();
+            st = connection.createStatement();
             st.setQueryTimeout(30);
             ResultSet rs = st.executeQuery(s);
             if (rs.next()) {
@@ -92,6 +93,11 @@ public class Database {
             }
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
+        }
+        finally {
+            if(st != null) {
+                st.close();
+            }
         }
 
         return null;
@@ -103,13 +109,19 @@ public class Database {
      * @return les résultats
      */
     public ResultSet executeSelect(String select) throws SQLException {
+        Statement st = null;
         try {
-            Statement st = connection.createStatement();
+            st = connection.createStatement();
             st.setQueryTimeout(30);
             return st.executeQuery(select);
 
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
+        }
+        finally {
+            if(st != null) {
+                st.close();
+            }
         }
 
     }
